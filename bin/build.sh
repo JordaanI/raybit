@@ -1,9 +1,16 @@
-if [ -e ../lib/loader.o1 ]; then
+logExe () {
+    echo "$1"
+    eval "$1"
+}
+
+root=$(realpath ..)
+
+if [ -e "$root/lib/loader.o" ]; then
     echo "Removing previous loader"
-    rm ../lib/loader.o1
+    logExe "rm $root/lib/loader.o"
 fi
 
 echo "Compiling Raybit.."
-gsc -obj -cc-options "-I/opt/homebrew/Cellar/raylib/5.5/include -L/opt/homebrew/Cellar/raylib/5.5/lib -lraylib" ../lib/loader.scm
-mv ../lib/loader.o .
-echo "Done: compiled to loader.o"
+logExe "gsc -obj -cc-options \"-I/opt/homebrew/Cellar/raylib/5.5/include -L/opt/homebrew/Cellar/raylib/5.5/lib -lraylib\" ../lib/loader.scm"
+logExe "mv $root/lib/loader.o $root/bin"
+echo "Done: compiled to $root/bin/loader.o"
