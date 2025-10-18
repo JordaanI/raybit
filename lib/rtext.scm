@@ -11,21 +11,9 @@
 ;;
 ;;
 ;; Author: Ivan Jordaan
-;; Date: 2025-10-07
+;; Date: 2025-10-18
 ;; email: ivan@axoinvent.com
 ;; Project:
 ;;
 
-(include "cffi.scm")
-(include "consts.scm")
-(include "structs.scm")
-(include "colors.scm")
-(include "rcore.scm")
-(include "raudio.scm")
-(include "rtextures.scm")
-(include "rtext.scm")
-
-
-;;; Tests
-
-;;(pp LIGHTGRAY)
+(define-c-lambda "DrawText" (UTF-8-string int int int Color) void)
